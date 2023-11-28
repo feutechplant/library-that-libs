@@ -9,7 +9,7 @@ basic library catalogue system.
 - keyword search function
 
 user key (id | pin):
-111 | 123
-222 | 456
-333 | 789 (Admin User)
+111 | 123,
+222 | 456,
+333 | 789 (Admin User),
 444 | 999
