@@ -21,17 +21,17 @@ struct User {
 void createLibrary(map<int, Book>& libraryDatabase) {
     libraryDatabase[1] = { "The First Book", 2022, 0, 1 }; // {Book Name, Publication Year, Initial Overdue Status, Circulation Status}
     libraryDatabase[2] = { "The Second Tome", 2023, 0, 1 };
-    libraryDatabase[3] = { "The Third Novel", 1, 0 };
+    libraryDatabase[3] = { "The Third Novel", 0, 0 };
     libraryDatabase[4] = { "The Fourth Chronicle", 2020, 0, 1 };
     libraryDatabase[5] = { "The Fifth Reference Book", 2021, 0, 1 };
     libraryDatabase[6] = { "The Sixth Journal", 2022, 0, 1 };
-    libraryDatabase[7] = { "The Seventh Diary", 2023, 1, 0 };
+    libraryDatabase[7] = { "The Seventh Diary", 2023, 0, 0 };
     libraryDatabase[8] = { "The Eighth Log", 2021, 0, 1 };
     libraryDatabase[9] = { "The Ninth Binder", 2022, 0, 1 };
-    libraryDatabase[10] = { "The Tenth Treatise", 2023, 1, 1 };
+    libraryDatabase[10] = { "The Tenth Treatise", 2023, 0, 1 };
 }
 
-w
+
 void populateUserDatabase(map<int, User>& userDatabase, const map<int, Book>& libraryDatabase) {
     userDatabase[111] = { "User111", 123, {{1, 0}, {2, 0}, {3, 1}, {4, 1}, {5, 0}, {6, 0}, {7, 1}, {8, 0}, {9, 0}, {10, 1}} }; // {Book ID, Overdue Status}
     userDatabase[222] = { "User222", 456, {{1, 1}, {2, 0}, {3, 1}, {4, 0}, {5, 1}, {6, 1}, {7, 0}, {8, 0}, {9, 1}, {10, 1}} };
