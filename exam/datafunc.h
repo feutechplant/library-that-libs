@@ -19,7 +19,7 @@ struct User {
 };
 
 void createLibrary(map<int, Book>& libraryDatabase) {
-    libraryDatabase[1] = { "The First Book", 2022, 0, 1 };
+    libraryDatabase[1] = { "The First Book", 2022, 0, 1 }; // {Book Name, Publication Year, Initial Overdue Status, Circulation Status}
     libraryDatabase[2] = { "The Second Tome", 2023, 0, 1 };
     libraryDatabase[3] = { "The Third Novel", 1, 0 };
     libraryDatabase[4] = { "The Fourth Chronicle", 2020, 0, 1 };
@@ -31,10 +31,11 @@ void createLibrary(map<int, Book>& libraryDatabase) {
     libraryDatabase[10] = { "The Tenth Treatise", 2023, 1, 1 };
 }
 
+w
 void populateUserDatabase(map<int, User>& userDatabase, const map<int, Book>& libraryDatabase) {
-    userDatabase[111] = { "User111", 123, {{1, 0}, {2, 0}, {3, 1}, {4, 1}, {5, 0}, {6, 0}, {7, 1}, {8, 0}, {9, 0}, {10, 1}} };
+    userDatabase[111] = { "User111", 123, {{1, 0}, {2, 0}, {3, 1}, {4, 1}, {5, 0}, {6, 0}, {7, 1}, {8, 0}, {9, 0}, {10, 1}} }; // {Book ID, Overdue Status}
     userDatabase[222] = { "User222", 456, {{1, 1}, {2, 0}, {3, 1}, {4, 0}, {5, 1}, {6, 1}, {7, 0}, {8, 0}, {9, 1}, {10, 1}} };
-    userDatabase[333] = { "User333", 789, {{1, 0}, {2, 1}, {3, 1}, {4, 0}, {5, 0}, {6, 1}, {7, 1}, {8, 1}, {9, 0}, {10, 0}} };
+    userDatabase[333] = { "User333", 789, {{1, 0}, {2, 1}, {3, 1}, {4, 0}, {5, 0}, {6, 1}, {7, 1}, {8, 1}, {9, 0}, {10, 0}} }; // Admin User
     userDatabase[444] = { "User444", 999, {{1, 1}, {2, 1}, {3, 0}, {4, 1}, {5, 1}, {6, 0}, {7, 0}, {8, 1}, {9, 0}, {10, 0}} };
 }
 
@@ -120,7 +121,7 @@ void displayOverdueBooks(const map<int, User>& userDatabase, const map<int, Book
     }
 }
 
-// Check if the keyword is present in the book title (case-insensitive)
+// check if the keyword is present in the book title (case insensitive)
 void searchBook(const string& keyword, const map<int, Book>& libraryDatabase) {
     cout << "Search Results for '" << keyword << "':" << endl;
     for (const auto& entry : libraryDatabase) {
@@ -132,6 +133,7 @@ void searchBook(const string& keyword, const map<int, Book>& libraryDatabase) {
 }
 
 void helpDesk() {
+	
 	cout << "\n  --list of commands-- \n\n";
 	cout << "/help - displays this menu" << endl;
 	cout << "/data - displays current user data (list of borrowed books)" << endl;
