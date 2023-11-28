@@ -19,32 +19,30 @@ struct User {
 };
 
 void createLibrary(map<int, Book>& libraryDatabase) {
-    libraryDatabase[1] = { "The First Book", 2022, 0, true };
-    libraryDatabase[2] = { "The Second Tome", 2023, 0, true };
-    libraryDatabase[3] = { "The Third Novel", 2020, 0, false };
-    libraryDatabase[4] = { "The Fourth Chronicle", 2020, 0, true };
-    libraryDatabase[5] = { "The Fifth Reference Book", 2021, 0, true };
-    libraryDatabase[6] = { "The Sixth Journal", 2022, 0, true };
-    libraryDatabase[7] = { "The Seventh Diary", 2023, 0, false };
-    libraryDatabase[8] = { "The Eighth Log", 2021, 0, true };
-    libraryDatabase[9] = { "The Ninth Binder", 2022, 0, true };
-    libraryDatabase[10] = { "The Tenth Treatise", 2023, 0, true };
+    libraryDatabase[1] = { "The First Book", 2022, 0, 1 };
+    libraryDatabase[2] = { "The Second Tome", 2023, 0, 1 };
+    libraryDatabase[3] = { "The Third Novel", 1, 0 };
+    libraryDatabase[4] = { "The Fourth Chronicle", 2020, 0, 1 };
+    libraryDatabase[5] = { "The Fifth Reference Book", 2021, 0, 1 };
+    libraryDatabase[6] = { "The Sixth Journal", 2022, 0, 1 };
+    libraryDatabase[7] = { "The Seventh Diary", 2023, 1, 0 };
+    libraryDatabase[8] = { "The Eighth Log", 2021, 0, 1 };
+    libraryDatabase[9] = { "The Ninth Binder", 2022, 0, 1 };
+    libraryDatabase[10] = { "The Tenth Treatise", 2023, 1, 1 };
 }
 
+void populateUserDatabase(map<int, User>& userDatabase, const map<int, Book>& libraryDatabase) {
+    userDatabase[111] = { "User111", 123, {{1, 0}, {2, 0}, {3, 1}, {4, 1}, {5, 0}, {6, 0}, {7, 1}, {8, 0}, {9, 0}, {10, 1}} };
+    userDatabase[222] = { "User222", 456, {{1, 1}, {2, 0}, {3, 1}, {4, 0}, {5, 1}, {6, 1}, {7, 0}, {8, 0}, {9, 1}, {10, 1}} };
+    userDatabase[333] = { "User333", 789, {{1, 0}, {2, 1}, {3, 1}, {4, 0}, {5, 0}, {6, 1}, {7, 1}, {8, 1}, {9, 0}, {10, 0}} };
+    userDatabase[444] = { "User444", 999, {{1, 1}, {2, 1}, {3, 0}, {4, 1}, {5, 1}, {6, 0}, {7, 0}, {8, 1}, {9, 0}, {10, 0}} };
+}
 
 void displayLibrary(const map<int, Book>& libraryDatabase) {
     for (const auto& entry : libraryDatabase) {
         cout << "Book: " << entry.first << ", Title: " << entry.second.title << ", Year: " << entry.second.publicationYear << endl;
     }
 }
-
-void populateUserDatabase(map<int, User>& userDatabase, const map<int, Book>& libraryDatabase) {
-    userDatabase[111] = { "User111", 123, {{1, false}, {2, false}, {3, true}, {4, true}, {5, false}, {6, false}, {7, true}, {8, false}, {9, false}, {10, true}} };
-    userDatabase[222] = { "User222", 456, {{1, true}, {2, false}, {3, true}, {4, false}, {5, true}, {6, true}, {7, false}, {8, false}, {9, true}, {10, true}} };
-    userDatabase[333] = { "User333", 789, {{1, false}, {2, true}, {3, true}, {4, false}, {5, false}, {6, true}, {7, true}, {8, true}, {9, false}, {10, false}} };
-    userDatabase[444] = { "User444", 999, {{1, true}, {2, true}, {3, false}, {4, true}, {5, true}, {6, false}, {7, false}, {8, true}, {9, false}, {10, false}} };
-}
-
 
 bool login(int userKey, int password, const map<int, User>& userDatabase) {
     auto it = userDatabase.find(userKey);
@@ -94,6 +92,7 @@ void displayUserData(int userID, const map<int, User>& userDatabase, const map<i
         cout << "User " << userID << " not found in the user database." << endl;
     }
 }
+
 void displayUnavailableBooks(const map<int, Book>& libraryDatabase) {
     cout << "Unavailable Books:" << endl;
 
@@ -120,7 +119,6 @@ void displayOverdueBooks(const map<int, User>& userDatabase, const map<int, Book
         }
     }
 }
-
 
 // Check if the keyword is present in the book title (case-insensitive)
 void searchBook(const string& keyword, const map<int, Book>& libraryDatabase) {
